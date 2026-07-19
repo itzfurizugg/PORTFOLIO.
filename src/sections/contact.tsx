@@ -1,0 +1,47 @@
+import { useState, type ChangeEvent, type FormEvent } from "react";
+import { contactLinks } from "../data/contactdata";
+
+function Contact() {
+    const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        const subject = encodeURIComponent(`Pesan dari ${form.name}`);
+        const body = encodeURIComponent(`${form.message}\n\nDari: ${form.name} (${form.email})`);
+        window.location.href = `mailto:youremail@example.com?subject=${subject}&body=${body}`;
+    };
+
+    return (
+        <section id="project" className="bg-base-800 py-10 px-6 sm:px-8 md:px-16">
+            <div className="max-w-6xl mx-auto">
+                <p className="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-2 animate-fade-in-up">
+                    Kontak
+                </p>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-10 animate-fade-in-up delay-100">
+                    Hubungi saya melalui.
+                </h2>
+                <div className="flex flex-col gap-4 justify-center">
+                    {contactLinks.map((item, index) => (
+                        <a
+                            key={item.title}
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex items-center gap-3 border border-black/40 rounded-none px-4 py-3 hover:bg-black hover:text-white transition-colors animate-fade-in-up`}
+                            style={{ animationDelay: `${0.2 + index * 0.1}s` }}
+                        >
+                            {item.icon}
+                            {item.title}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </section >
+    );
+}
+
+export default Contact;
