@@ -9,6 +9,14 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+        title: "TelaTV",
+        image: "/projects/musleem.jpg",
+        description: "Website untuk menonton IPTV Gratis Internasional",
+        tags: ["React", "Typescript"],
+        badge: "Website",
+        link: "https://github.com/itzfurizugg/TelaTV"
+    },
+    {
         title: "Musleem",
         image: "/projects/musleem.jpg",
         description: "Aplikasi islami dengan fitur pengingat sholat dan bebas iklan",
@@ -33,19 +41,11 @@ export const projects: Project[] = [
         link: ""
     },
     {
-        title: "CatchIt",
-        image: "/projects/catchit.jpg",
-        description: "Aplikasi pelaporan fasilitas dengan 8 tabel Supabase, RLS, dan panel admin.",
-        tags: ["React", "Supabase"],
-        badge: "Web App",
-        link: ""
-    },
-    {
         title: "Maintenance Mode",
         image: "/projects/maintenance.jpg",
         description: "Web pengalihan untuk proyek yang sedang dalam pemeliharaan.",
-        tags: ["React"],
-        badge: "Web",
+        tags: ["React", "Typescript"],
+        badge: "Website",
         link: "https://github.com/itzfurizugg/Maintenance-Mode"
     }
 ];

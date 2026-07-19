@@ -13,7 +13,7 @@ function Card({ title, description, tags, badge, link }: CardProps) {
             <div className="card-body">
                 <h2 className="card-title">
                     {title}
-                    {badge && <div className="badge bg-black text-white border-black">{badge}</div>}
+                    {badge && <div className="badge bg-black text-white border-black p-3 px-2">{badge}</div>}
                 </h2>
                 <p>{description}</p>
                 <div className="card-actions justify-start py-1">
