@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { User, FolderKanban, Mail } from "lucide-react";
+import { Home, User, FolderKanban, Mail } from "lucide-react";
 
 function Navbar() {
     const [open, setOpen] = useState(false);
@@ -20,6 +20,7 @@ function Navbar() {
     const handleHomeClick = (e: React.MouseEvent) => {
         e.preventDefault();
         navigate("/");
+        setOpen(false);
 
         setHomeFlash(true);
         if (flashTimeout.current) clearTimeout(flashTimeout.current);
@@ -107,6 +108,16 @@ function Navbar() {
                 }`}
             >
                 <ul className="menu p-4 gap-1 w-full">
+                    <li className="w-full">
+                        <Link
+                            to="/"
+                            onClick={handleHomeClick}
+                            className="flex items-center gap-3 py-3 text-base rounded-none w-full active:bg-base-200"
+                        >
+                            <Home className="w-4 h-4" />
+                            Home
+                        </Link>
+                    </li>
                     {menuItems.map((item) => {
                         const Icon = item.icon;
                         const active = isActive(item.to);
