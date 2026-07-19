@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Home, User, FolderKanban, Mail } from "lucide-react";
+import { User, FolderKanban, Mail } from "lucide-react";
 
 function Navbar() {
     const [open, setOpen] = useState(false);

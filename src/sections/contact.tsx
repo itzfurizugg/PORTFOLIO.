@@ -1,20 +1,6 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
 import { contactLinks } from "../data/contactdata";
 
 function Contact() {
-    const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = (e: FormEvent) => {
-        e.preventDefault();
-        const subject = encodeURIComponent(`Pesan dari ${form.name}`);
-        const body = encodeURIComponent(`${form.message}\n\nDari: ${form.name} (${form.email})`);
-        window.location.href = `mailto:youremail@example.com?subject=${subject}&body=${body}`;
-    };
-
     return (
         <section id="project" className="bg-base-800 py-10 px-6 sm:px-8 md:px-16">
             <div className="max-w-6xl mx-auto">

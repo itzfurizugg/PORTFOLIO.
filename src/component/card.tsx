@@ -7,7 +7,7 @@ interface CardProps {
     link: string;
 }
 
-function Card({ title, image, description, tags, badge, link }: CardProps) {
+function Card({ title, description, tags, badge, link }: CardProps) {
     return (
         <div className="card bg-base-100 border border-black/40 w-full rounded-none">
             <div className="card-body">

@@ -1,5 +1,5 @@
 import { FiGithub, FiMail } from "react-icons/fi";
-import { FaWhatsapp, FaDiscord, FaTelegram } from "react-icons/fa";
+import { FaDiscord, FaTelegram } from "react-icons/fa";
 import type { ReactNode } from "react";
 
 export interface ContactLink {

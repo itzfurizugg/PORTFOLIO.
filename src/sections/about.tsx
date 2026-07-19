@@ -1,4 +1,4 @@
-import white from "../assets/white.png";
+// import white from "../assets/white.png";
 import secret from "../assets/secret.png";
 
 function About() {
