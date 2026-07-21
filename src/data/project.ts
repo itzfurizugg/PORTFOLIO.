@@ -5,6 +5,7 @@ export interface Project {
     tags: string[];
     badge?: string;
     link: string;
+    preview: string;
 }
 
 export const projects: Project[] = [
@@ -14,7 +15,8 @@ export const projects: Project[] = [
         description: "Website untuk menonton IPTV Gratis Internasional",
         tags: ["React", "Typescript"],
         badge: "Website",
-        link: "https://github.com/itzfurizugg/TelaTV"
+        link: "https://github.com/itzfurizugg/TelaTV",
+        preview: "https://telatv-iptv.vercel.app/"
     },
     {
         title: "Musleem",
@@ -22,7 +24,9 @@ export const projects: Project[] = [
         description: "Aplikasi islami dengan fitur pengingat sholat dan bebas iklan",
         tags: ["Flutter", "Supabase"],
         badge: "Mobile App",
-        link: "https://github.com/itzfurizugg/Musleem"
+        link: "https://github.com/itzfurizugg/Musleem",
+        preview: "https://musleem.vercel.app/"
+
     },
     {
         title: "Chromonic",
@@ -30,7 +34,9 @@ export const projects: Project[] = [
         description: "Aplikasi kamera estetik dengan rasio 4:3 dan fitur sekali jepret siap unggah ke sosial media",
         tags: ["Flutter"],
         badge: "Mobile App",
-        link: "https://github.com/itzfurizugg/chromonic"
+        link: "https://github.com/itzfurizugg/chromonic",
+        preview: "https://noprojectfound.vercel.app"
+
     },
     {
         title: "Movlix",
@@ -38,7 +44,9 @@ export const projects: Project[] = [
         description: "Database film dengan Supabase dan Expo Router",
         tags: ["Expo", "Supabase"],
         badge: "Mobile App",
-        link: ""
+        link: "https://github.com/itzfurizugg/Movlix",
+        preview: "https://noprojectfound.vercel.app"
+
     },
     {
         title: "Maintenance Mode",
@@ -46,6 +54,16 @@ export const projects: Project[] = [
         description: "Web pengalihan untuk proyek yang sedang dalam pemeliharaan.",
         tags: ["React", "Typescript"],
         badge: "Website",
-        link: "https://github.com/itzfurizugg/Maintenance-Mode"
+        link: "https://github.com/itzfurizugg/Maintenance-Mode",
+        preview: "https://maintenancemode-sigma.vercel.app"
+    },
+    {
+        title: "tookshot",
+        image: "/projects/maintenance.jpg",
+        description: "Aplikasi peminjaman kamera yang berbasis Mobile",
+        tags: ["Flutter", "Laravel"],
+        badge: "Mobile App",
+        link: "https://github.com/itzfurizugg/Maintenance-Mode",
+        preview: "https://maintenancemode-sigma.vercel.app"
     }
 ];

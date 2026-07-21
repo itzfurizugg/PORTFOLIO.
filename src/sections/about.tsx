@@ -39,7 +39,7 @@ function About() {
                         <p className="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-2">
                             Tentang saya
                         </p>
-                        <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.05] mb-6">
+                        <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] mb-6">
                             Muhammad Dzaki<br />Rafif Helmiansyah
                         </h1>
 
@@ -49,7 +49,7 @@ function About() {
                             <div className="badge bg-[#686D76] p-4 mr-2 mb-2 text-white rounded-none">IT Support</div>
                         </div>
 
-                        <p className="py-3 font-bold text-lg leading-relaxed">
+                        <p className="py-3 text-lg leading-relaxed">
                             Saya siswa SMK Negeri 10 Jakarta jurusan Rekayasa Perangkat Lunak (RPL) yang saat ini sedang bersiap menghadapi Praktik Kerja Lapangan (PKL). Saya memiliki ketertarikan besar di bidang pengembangan perangkat lunak, khususnya frontend development, dan terus berusaha mengasah kemampuan dalam membangun antarmuka aplikasi, memahami logika pemrograman, serta mengelola database dengan baik. Saya terbiasa mempelajari teknologi baru secara mandiri melalui proyek-proyek yang saya kerjakan sendiri, karena bagi saya belajar langsung lewat praktik jauh lebih efektif dibanding sekadar teori. Dengan dasar pemahaman matematika yang cukup kuat, saya mampu berpikir logis dalam menganalisis masalah dan menyusun solusi secara terstruktur. Saya berkomitmen untuk terus meningkatkan kemampuan, baik dari sisi teknis maupun nonteknis. Saya juga mudah beradaptasi dengan lingkungan baru dan siap belajar sekaligus berkontribusi secara nyata selama menjalani PKL.
                         </p>
                     </div>

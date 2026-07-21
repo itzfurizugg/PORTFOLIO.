@@ -50,11 +50,11 @@ const skillCategories = [
 function Skills() {
     return (
         <section id="skills" className="bg-base-100 py-20 px-6 sm:px-8 md:px-16">
-            <div className="max-w-5xl mx-auto">
+            <div className="max-w-6xl mx-auto">
                 <p className="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-2">
                     Keahlian
                 </p>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+                <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4">
                     Keahlian saya.
                 </h2>
                 <p className="text-gray-500 mb-12 max-w-xl">

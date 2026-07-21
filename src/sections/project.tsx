@@ -8,13 +8,13 @@ function ProjectList() {
                 <p className="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-2 animate-fade-in-up">
                     Portfolio
                 </p>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-10 animate-fade-in-up delay-100">
+                <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-10 animate-fade-in-up delay-100">
                     Proyek Saya.
                 </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {projects.map((project, index) => (
-                        <div key={project.title} className="animate-fade-in-up" style={{ animationDelay: `${0.2 + index * 0.1}s` }}>
+                        <div key={project.title} className="animate-fade-in-up h-full w-full" style={{ animationDelay: `${0.2 + index * 0.1}s` }}>
                             <Card {...project} />
                         </div>
                     ))}

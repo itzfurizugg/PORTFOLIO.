@@ -7,8 +7,8 @@ function Contact() {
                 <p className="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-2 animate-fade-in-up">
                     Kontak
                 </p>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-10 animate-fade-in-up delay-100">
-                    Hubungi saya melalui.
+                <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-10 animate-fade-in-up delay-100">
+                    Hubungi Saya melalui.
                 </h2>
                 <div className="flex flex-col gap-4 justify-center">
                     {contactLinks.map((item, index) => (
