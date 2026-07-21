@@ -3,7 +3,7 @@ import secret from "../assets/secret.png";
 
 function About() {
     return (
-        <section id="about" className="bg-base-100 pt-20 py-10 px-6 sm:px-8 md:px-16">
+        <section id="about" className="bg-base-100 pt-10 pb-10 px-6 sm:px-8 md:px-16">
             <div className="max-w-6xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-10 lg:gap-16">
 
