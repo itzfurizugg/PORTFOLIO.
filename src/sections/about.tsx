@@ -15,10 +15,10 @@ function About() {
                             className="w-full aspect-[1/1] lg:aspect-[4/5] object-cover rounded-none border-black border-2"
                         />
 
-                        <div className="w-fit inline-flex items-center gap-2 border border-black border-2 px-4 py-2 text-black rounded-none whitespace-nowrap">
+                        {/* <div className="w-fit inline-flex items-center gap-2 border border-black border-2 px-4 py-2 text-black rounded-none whitespace-nowrap">
                             <span className="w-2 h-2 rounded-full bg-green-500 shrink-0"></span>
                             Bersedia untuk PKL.
-                        </div>
+                        </div> */}
 
                         <div className="text-sm">
                             <div className="grid grid-cols-[90px_1fr] gap-y-3">
@@ -37,7 +37,7 @@ function About() {
                     {/* Kolom kanan: nama besar + badge + deskripsi */}
                     <div>
                         <p className="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-2">
-                            Tentang saya
+                            About Me
                         </p>
                         <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] mb-6">
                             Muhammad Dzaki<br />Rafif Helmiansyah

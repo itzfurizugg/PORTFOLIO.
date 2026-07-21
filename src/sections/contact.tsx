@@ -5,7 +5,7 @@ function Contact() {
         <section id="project" className="bg-base-800 py-10 px-6 sm:px-8 md:px-16">
             <div className="max-w-6xl mx-auto">
                 <p className="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-2 animate-fade-in-up">
-                    Kontak
+                    Contact
                 </p>
                 <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-10 animate-fade-in-up delay-100">
                     Hubungi Saya melalui.

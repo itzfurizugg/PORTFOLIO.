@@ -17,9 +17,9 @@ function Card({ title, description, tags, badge, link, preview }: CardProps) {
                 <div className="flex-1">
                     <h2 className="card-title text-left break-words">
                         {title}
-                        {badge && <div className="badge bg-black text-white border-black p-3 px-2">{badge}</div>}
+                        {badge && <div className="badge bg-black mb-1 text-white border-black p-3 px-2">{badge}</div>}
                     </h2>
-                    <p className="text-left break-words">{description}</p>
+                    <p className="text-left break-words mt-2 mb-2">{description}</p>
                     <div className="card-actions justify-start py-1 min-h-[32px]">
                         {tags.map((tag) => (
                             <div key={tag} className="badge badge-outline">
