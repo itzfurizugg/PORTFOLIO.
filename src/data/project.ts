@@ -39,6 +39,16 @@ export const projects: Project[] = [
 
     },
     {
+        title: "TheQuran",
+        image: "/projects/chromonic.jpg",
+        description: "Website membaca Al-Quran tanpa iklan menggunakan API dari EQuran.id",
+        tags: ["React"],
+        badge: "Website",
+        link: "https://github.com/itzfurizugg/thequran",
+        preview: "https://thequran-one.vercel.app"
+
+    },
+    {
         title: "Movlix",
         image: "/projects/movlix.jpg",
         description: "Database film dengan Supabase dan Expo Router",
@@ -63,7 +73,7 @@ export const projects: Project[] = [
         description: "Aplikasi peminjaman kamera yang berbasis Mobile",
         tags: ["Flutter", "Laravel"],
         badge: "Mobile App",
-        link: "https://github.com/itzfurizugg/Maintenance-Mode",
-        preview: "https://maintenancemode-sigma.vercel.app"
+        link: "https://github.com/itzfurizugg/tookshot",
+        preview: "https://noprojectfound.vercel.app"
     }
 ];

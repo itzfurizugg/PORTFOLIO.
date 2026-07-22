@@ -10,7 +10,7 @@ function Hero() {
 
     return (
         <section id="hero">
-            <div className="bg-base-800 h-screen overflow-hidden flex items-center px-6 sm:px-8 md:px-16">
+            <div className="bg-base-800 h-screen overflow-hidden flex items-start pt-20 px-6 sm:px-8 md:px-16">
                 <div className="max-w-3xl">
                     <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight animate-fade-in-up">
                         Terus<br />Berkembang.<br /> Mencoba Hal<br />Baru.
