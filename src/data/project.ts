@@ -9,12 +9,12 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-        {
+    {
         title: "Formaly",
         image: "https://res.cloudinary.com/wgyqi7lt/image/upload/v1786431694/formaly_kjzvza.png",
         description: "Formaly adalah aplikasi pembuat formulir seperti Google Forms yang dikembangkan sebagai proyek tugas akhir kelompok beranggotakan 6 orang. Aplikasi ini punya versi mobile (Flutter) dan web (React TypeScript) dengan backend Supabase PostgreSQL, mendukung tiga peran pengguna (user, creator, admin), serta dilengkapi rich text editor untuk membuat deskripsi form dan pertanyaan yang fleksibel — tidak terikat ke kelas tertentu sehingga bisa juga digunakan untuk ujian.",
         tags: ["React", "Typescript", "Supabase", "Capacitor"],
-        badge: ["Website"],
+        badge: "Website",
         link: "https://github.com/itzfurizugg/formaly",
         preview: "https://noprojectfound.vercel.app"
     },
@@ -46,7 +46,7 @@ export const projects: Project[] = [
         link: "https://github.com/itzfurizugg/Maintenance-Mode",
         preview: "https://maintenancemode-sigma.vercel.app"
     },
-        {
+    {
         title: "atSearch",
         image: "https://res.cloudinary.com/wgyqi7lt/image/upload/v1786433071/telatv-1_fb8bfe.png",
         description: "Ambient Clock adalah project web sederhana yang menampilkan jam bergaya ambient, saat ini sudah di-deploy di Vercel, dengan pengembangan lanjutan berupa penambahan dock di bagian bawah untuk menyimpan shortcut link yang bisa dikustomisasi pengguna.",

@@ -1,4 +1,7 @@
 // Study.tsx
+import { motion } from "framer-motion";
+import { inView, useFadeUp, useStagger } from "../lib/motion";
+
 const educationHistory = [
     {
         period: "2024 — Sekarang",
@@ -18,23 +21,45 @@ const educationHistory = [
 ];
 
 function Study() {
+    const reveal = useFadeUp({ distance: 24 });
+    const itemMotion = useFadeUp({ distance: 24, duration: 0.5 });
+    const stagger = useStagger(0.1);
+
     return (
         <section id="study" className="bg-brand-accent py-24 px-6 sm:px-8 md:px-16">
             <div className="max-w-7xl mx-auto">
-                <p className="text-xs font-extrabold uppercase tracking-widest text-brand-primary mb-4">
+                <motion.p
+                    className="text-xs font-extrabold uppercase tracking-widest text-brand-primary mb-4"
+                    variants={reveal}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={inView}
+                >
                     Riwayat Pendidikan
-                </p>
-                <h2 className="font-display text-brand-background text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-display tracking-display uppercase mb-16 max-w-3xl">
+                </motion.p>
+                <motion.h2
+                    className="font-display text-brand-background text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-display tracking-display uppercase mb-16 max-w-3xl"
+                    variants={reveal}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={inView}
+                >
                     Perjalanan<br />Belajar<span className="text-brand-primary">.</span>
-                </h2>
+                </motion.h2>
 
                 {/* Timeline vertikal */}
                 <div className="relative pl-10 sm:pl-16">
                     <div className="absolute left-[7px] sm:left-[11px] top-2 bottom-2 w-px bg-brand-primary/20" />
 
-                    <div className="flex flex-col gap-12 sm:gap-16">
+                    <motion.div
+                        className="flex flex-col gap-12 sm:gap-16"
+                        variants={stagger}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={inView}
+                    >
                         {educationHistory.map((item, index) => (
-                            <div key={index} className="relative group">
+                            <motion.div key={index} className="relative group" variants={itemMotion}>
                                 {/* Dot penanda */}
                                 <span className="absolute -left-10 sm:-left-16 top-1.5 w-4 h-4 rounded-full border-2 border-brand-primary bg-brand-accent group-hover:bg-brand-primary transition-colors" />
 
@@ -55,9 +80,9 @@ function Study() {
                                         {String(index + 1).padStart(2, "0")}
                                     </span>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

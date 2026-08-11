@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Globe } from "lucide-react";
+import { inView, useFadeUp } from "../lib/motion";
 
 interface CardProps {
     title: string;
@@ -12,8 +14,18 @@ interface CardProps {
 }
 
 function Card({ title, description, tags, badge, link, preview }: CardProps) {
+    const reveal = useFadeUp({ distance: 24, duration: 0.5 });
+
     return (
-        <div className="bg-brand-background border border-brand-accent/20 rounded-brand-lg w-full h-full flex flex-col min-w-0 hover:border-brand-accent transition-colors">
+        <motion.div
+            className="bg-brand-background border border-brand-accent/20 rounded-brand-lg w-full h-full flex flex-col min-w-0 hover:border-brand-accent transition-colors"
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+        >
             <div className="p-6 flex-1 flex flex-col">
                 <Link to={`/project/${encodeURIComponent(title)}`} className="flex-1 flex flex-col">
                     <div className="flex-1">
@@ -45,7 +57,7 @@ function Card({ title, description, tags, badge, link, preview }: CardProps) {
                     )}
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

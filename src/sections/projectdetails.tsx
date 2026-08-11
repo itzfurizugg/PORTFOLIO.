@@ -1,16 +1,27 @@
 // ProjectDetail.tsx
 import { Link, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Globe } from "lucide-react";
 import { projects } from "../data/project";
+import { inView, useFadeUp, useStagger } from "../lib/motion";
 
 function ProjectDetail() {
     const { id } = useParams();
     const project = projects.find((p) => p.title === id);
 
+    const reveal = useFadeUp({ distance: 24 });
+    const item = useFadeUp({ distance: 20, duration: 0.4 });
+    const stagger = useStagger(0.08);
+
     if (!project) {
         return (
             <section className="bg-brand-background py-24 px-6 sm:px-8 md:px-16 min-h-screen flex items-center">
-                <div className="max-w-7xl mx-auto text-center w-full">
+                <motion.div
+                    className="max-w-7xl mx-auto text-center w-full"
+                    variants={reveal}
+                    initial="hidden"
+                    animate="visible"
+                >
                     <p className="text-xs font-extrabold uppercase tracking-widest text-brand-accent mb-4">
                         404
                     </p>
@@ -24,7 +35,7 @@ function ProjectDetail() {
                         <ArrowLeft size={16} />
                         Kembali ke Project
                     </Link>
-                </div>
+                </motion.div>
             </section>
         );
     }
@@ -33,16 +44,29 @@ function ProjectDetail() {
         <section className="bg-brand-background py-14 sm:py-16 px-6 sm:px-8 md:px-16">
             <div className="max-w-7xl mx-auto">
 
-                <Link
-                    to="/project"
-                    className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-brand-accent hover:text-brand-text transition-colors mb-8"
+                <motion.div
+                    variants={reveal}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={inView}
                 >
-                    <ArrowLeft size={16} />
-                    Kembali ke Project
-                </Link>
+                    <Link
+                        to="/project"
+                        className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-brand-accent hover:text-brand-text transition-colors mb-8"
+                    >
+                        <ArrowLeft size={16} />
+                        Kembali ke Project
+                    </Link>
+                </motion.div>
 
                 {/* Gambar full-bleed dengan judul overlay */}
-                <div className="relative rounded-brand-lg overflow-hidden border border-brand-accent/20 mb-8">
+                <motion.div
+                    className="relative rounded-brand-lg overflow-hidden border border-brand-accent/20 mb-8"
+                    variants={reveal}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={inView}
+                >
                     <img
                         src={project.image}
                         alt={project.title}
@@ -61,57 +85,77 @@ function ProjectDetail() {
                             {project.title}
                         </h1>
                     </div>
-                </div>
+                </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-8">
-                    <div>
+                    <motion.div
+                        variants={reveal}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={inView}
+                    >
                         <p className="text-xs font-extrabold uppercase tracking-widest text-brand-accent mb-3">
                             Deskripsi
                         </p>
                         <p className="text-sm sm:text-base font-bold leading-relaxed text-brand-text/80">
                             {project.description}
                         </p>
-                    </div>
+                    </motion.div>
 
-                    <div className="flex flex-col gap-3">
+                    <motion.div
+                        className="flex flex-col gap-3"
+                        variants={stagger}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={inView}
+                    >
                         {project.link && (
-                            <a
+                            <motion.a
                                 className="flex items-center justify-between gap-3 bg-brand-accent text-brand-primary font-extrabold uppercase tracking-wider text-sm px-5 py-3.5 rounded-brand-md hover:bg-brand-text transition-colors"
                                 href={project.link}
                                 target="_blank"
                                 rel="noreferrer"
+                                variants={item}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                             >
                                 Lihat Project
                                 <ExternalLink size={16} />
-                            </a>
+                            </motion.a>
                         )}
                         {project.preview && (
-                            <a
+                            <motion.a
                                 className="flex items-center justify-between gap-3 border border-brand-accent/40 text-brand-text font-extrabold uppercase tracking-wider text-sm px-5 py-3.5 rounded-brand-md hover:bg-brand-accent hover:text-brand-primary transition-colors"
                                 href={project.preview}
                                 target="_blank"
                                 rel="noreferrer"
+                                variants={item}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                             >
                                 Preview
                                 <Globe size={16} />
-                            </a>
+                            </motion.a>
                         )}
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Tags — dikembalikan jadi map per-item, bukan raw dump */}
-                <div className="mt-8 pt-6 border-t border-brand-accent/20 flex flex-wrap gap-x-3 gap-y-4">
-                    {project.tags?.map((tag, i) => (
-                        <div key={tag} className="flex items-baseline gap-2">
-                            {/* <span className="text-xs font-extrabold text-brand-accent">
-                                {String(i + 1).padStart(2, "0")}
-                            </span> */}
+                <motion.div
+                    className="mt-8 pt-6 border-t border-brand-accent/20 flex flex-wrap gap-x-3 gap-y-4"
+                    variants={stagger}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={inView}
+                >
+                    {project.tags?.map((tag) => (
+                        <motion.div key={tag} className="flex items-baseline gap-2" variants={item}>
                             <span className="px-2 py-1 text font-semibold text-brand-accent border border-brand-accent/30 rounded-brand-md">
                                 {tag}
                             </span>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );
