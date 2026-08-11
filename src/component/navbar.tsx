@@ -46,7 +46,7 @@ function Navbar() {
                 <Link
                     to="/"
                     onClick={handleHomeClick}
-                    className={`px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-brand-md transition-colors duration-300 ${
+                    className={`px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-brand-none transition-colors duration-300 ${
                         homeFlash
                             ? "bg-brand-accent text-black"
                             : "hover:text-brand-accent"
@@ -58,7 +58,7 @@ function Navbar() {
                     <Link
                         key={item.label}
                         to={item.to}
-                        className={`px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-brand-md transition-colors duration-300 ${
+                        className={`px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-brand-none transition-colors duration-300 ${
                             isActive(item.to)
                                 ? "bg-brand-accent text-black"
                                 : "hover:text-brand-accent"

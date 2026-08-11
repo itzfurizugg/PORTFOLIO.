@@ -1,6 +1,6 @@
 // Skills.tsx
 import { motion } from "framer-motion";
-import { inView, useFadeUp, useStagger } from "../lib/motion";
+import { inView, useMaskLine, useSpringReveal, useStagger } from "../lib/motion";
 
 const skillCategories = [
     { category: "Web Development", items: ["HTML", "CSS", "Javascript", "PHP"] },
@@ -11,10 +11,12 @@ const skillCategories = [
 ];
 
 function Skills() {
-    const reveal = useFadeUp({ distance: 24 });
-    const panel = useFadeUp({ distance: 28, duration: 0.6 });
+    const reveal = useSpringReveal({ distance: 16, blur: 0, delay: 0.08 });
+    const revealBody = useSpringReveal({ distance: 16, blur: 0, delay: 0.3 });
+    const maskLine = useMaskLine(0);
+    const panel = useSpringReveal({ distance: 16, blur: 0, scale: 0.95 });
     const stagger = useStagger(0.08);
-    const chip = useFadeUp({ distance: 16, duration: 0.4 });
+    const chip = useSpringReveal({ distance: 8, blur: 0 });
     const chipsStagger = useStagger(0.06);
 
     return (
@@ -31,16 +33,20 @@ function Skills() {
                 </motion.p>
                 <motion.h2
                     className="font-display text-brand-text text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-display tracking-display uppercase mb-4 max-w-3xl"
-                    variants={reveal}
+                    variants={stagger}
                     initial="hidden"
                     whileInView="visible"
                     viewport={inView}
                 >
-                    Keahlian<span className="text-brand-accent"> Saya.</span>
+                    <span className="block overflow-hidden">
+                        <motion.span className="block" variants={maskLine(0.14)}>
+                            Keahlian<span className="text-brand-accent"> Saya.</span>
+                        </motion.span>
+                    </span>
                 </motion.h2>
                 <motion.p
                     className="max-w-xl text-sm font-bold uppercase tracking-wide text-brand-text/50 mb-14"
-                    variants={reveal}
+                    variants={revealBody}
                     initial="hidden"
                     whileInView="visible"
                     viewport={inView}

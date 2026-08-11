@@ -3,14 +3,14 @@ import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Globe } from "lucide-react";
 import { projects } from "../data/project";
-import { inView, useFadeUp, useStagger } from "../lib/motion";
+import { useSpringReveal, useStagger } from "../lib/motion";
 
 function ProjectDetail() {
     const { id } = useParams();
     const project = projects.find((p) => p.title === id);
 
-    const reveal = useFadeUp({ distance: 24 });
-    const item = useFadeUp({ distance: 20, duration: 0.4 });
+    const reveal = useSpringReveal({ distance: 16, blur: 6, delay: 0.08 });
+    const item = useSpringReveal({ distance: 16, blur: 6, scale: 0.95 });
     const stagger = useStagger(0.08);
 
     if (!project) {
@@ -47,8 +47,7 @@ function ProjectDetail() {
                 <motion.div
                     variants={reveal}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={inView}
+                    animate="visible"
                 >
                     <Link
                         to="/project"
@@ -64,8 +63,7 @@ function ProjectDetail() {
                     className="relative rounded-brand-lg overflow-hidden border border-brand-accent/20 mb-8"
                     variants={reveal}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={inView}
+                    animate="visible"
                 >
                     <img
                         src={project.image}
@@ -91,9 +89,8 @@ function ProjectDetail() {
                     <motion.div
                         variants={reveal}
                         initial="hidden"
-                        whileInView="visible"
-                        viewport={inView}
-                    >
+                        animate="visible"
+                >
                         <p className="text-xs font-extrabold uppercase tracking-widest text-brand-accent mb-3">
                             Deskripsi
                         </p>
@@ -106,9 +103,8 @@ function ProjectDetail() {
                         className="flex flex-col gap-3"
                         variants={stagger}
                         initial="hidden"
-                        whileInView="visible"
-                        viewport={inView}
-                    >
+                        animate="visible"
+                >
                         {project.link && (
                             <motion.a
                                 className="flex items-center justify-between gap-3 bg-brand-accent text-brand-primary font-extrabold uppercase tracking-wider text-sm px-5 py-3.5 rounded-brand-md hover:bg-brand-text transition-colors"
@@ -145,8 +141,7 @@ function ProjectDetail() {
                     className="mt-8 pt-6 border-t border-brand-accent/20 flex flex-wrap gap-x-3 gap-y-4"
                     variants={stagger}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={inView}
+                    animate="visible"
                 >
                     {project.tags?.map((tag) => (
                         <motion.div key={tag} className="flex items-baseline gap-2" variants={item}>

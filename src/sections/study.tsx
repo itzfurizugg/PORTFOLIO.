@@ -1,6 +1,6 @@
 // Study.tsx
 import { motion } from "framer-motion";
-import { inView, useFadeUp, useStagger } from "../lib/motion";
+import { inView, useMaskLine, useSpringReveal, useStagger } from "../lib/motion";
 
 const educationHistory = [
     {
@@ -21,8 +21,9 @@ const educationHistory = [
 ];
 
 function Study() {
-    const reveal = useFadeUp({ distance: 24 });
-    const itemMotion = useFadeUp({ distance: 24, duration: 0.5 });
+    const reveal = useSpringReveal({ distance: 16, blur: 0, delay: 0.08 });
+    const maskLine = useMaskLine(0);
+    const itemMotion = useSpringReveal({ distance: 16, blur: 0 });
     const stagger = useStagger(0.1);
 
     return (
@@ -39,12 +40,21 @@ function Study() {
                 </motion.p>
                 <motion.h2
                     className="font-display text-brand-background text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-display tracking-display uppercase mb-16 max-w-3xl"
-                    variants={reveal}
+                    variants={stagger}
                     initial="hidden"
                     whileInView="visible"
                     viewport={inView}
                 >
-                    Perjalanan<br />Belajar<span className="text-brand-primary">.</span>
+                    <span className="block overflow-hidden">
+                        <motion.span className="block" variants={maskLine(0.14)}>
+                            Perjalanan
+                        </motion.span>
+                    </span>
+                    <span className="block overflow-hidden">
+                        <motion.span className="block" variants={maskLine(0.2)}>
+                            Belajar<span className="text-brand-primary">.</span>
+                        </motion.span>
+                    </span>
                 </motion.h2>
 
                 {/* Timeline vertikal */}

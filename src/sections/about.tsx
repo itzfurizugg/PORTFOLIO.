@@ -1,7 +1,7 @@
 // About.tsx
 import { motion } from "framer-motion";
 import secret from "../assets/secret.png";
-import { inView, useFadeUp, useStagger } from "../lib/motion";
+import { useMaskLine, useSpringReveal, useStagger } from "../lib/motion";
 
 const infoRows = [
     { label: "Domisili", value: "Jakarta, Indonesia" },
@@ -12,10 +12,13 @@ const infoRows = [
 const roles = ["Web Developer", "Graphic Designer", "IT Support"];
 
 function About() {
-    const reveal = useFadeUp({ distance: 24 });
-    const roleItem = useFadeUp({ distance: 20, duration: 0.4 });
+    const reveal = useSpringReveal({ distance: 16, blur: 6, delay: 0.08 });
+    const revealImg = useSpringReveal({ distance: 16, blur: 6, delay: 0.16 });
+    const maskLine = useMaskLine();
+    const revealBody = useSpringReveal({ distance: 16, blur: 6, delay: 0.32 });
+    const roleItem = useSpringReveal({ distance: 16, blur: 6 });
     const rolesStagger = useStagger(0.08);
-    const rowItem = useFadeUp({ distance: 20, duration: 0.4 });
+    const rowItem = useSpringReveal({ distance: 16, blur: 6 });
     const rowsStagger = useStagger(0.08);
 
     return (
@@ -26,8 +29,7 @@ function About() {
                     className="text-xs font-extrabold uppercase tracking-widest text-brand-accent mb-6"
                     variants={reveal}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={inView}
+                    animate="visible"
                 >
                     About Me
                 </motion.p>
@@ -37,35 +39,31 @@ function About() {
                         src={secret}
                         alt="Foto Profil"
                         className="w-full h-64 sm:h-72 lg:h-full aspect-[4/5] lg:aspect-auto object-cover rounded-none border-2"
-                        variants={reveal}
+                        variants={revealImg}
                         initial="hidden"
-                        whileInView="visible"
-                        viewport={inView}
+                        animate="visible"
                     />
 
-                    <motion.h1
-                        className="font-display text-brand-text text-5xl sm:text-6xl md:text-7xl xl:text-[6rem] font-bold leading-[1.1] tracking-normal uppercase self-center"
-                        variants={reveal}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={inView}
-                    >
-                        Muhammad Dzaki
-                        <br className="hidden sm:block" />
-                        <span> </span>
-                        <span className="block sm:inline mt-2 sm:mt-0 text-brand-accent">
-                            Rafif Helmiansyah
+                    <h1 className="font-display text-brand-text text-5xl sm:text-6xl md:text-7xl xl:text-[6rem] font-bold leading-[1.1] tracking-normal uppercase self-center">
+                        <span className="block overflow-hidden">
+                            <motion.span className="block" variants={maskLine(0.08)} initial="hidden" animate="visible">
+                                Muhammad Dzaki
+                            </motion.span>
                         </span>
-                    </motion.h1>
+                        <span className="block overflow-hidden">
+                            <motion.span className="block text-brand-accent" variants={maskLine(0.14)} initial="hidden" animate="visible">
+                                Rafif Helmiansyah
+                            </motion.span>
+                        </span>
+                    </h1>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start">
                     <motion.p
                         className="text-sm font-bold leading-relaxed text-brand-text/80 order-2 lg:order-1"
-                        variants={reveal}
+                        variants={revealBody}
                         initial="hidden"
-                        whileInView="visible"
-                        viewport={inView}
+                        animate="visible"
                     >
                         Saya siswa SMK Negeri 10 Jakarta jurusan Rekayasa Perangkat Lunak (RPL) yang saat ini sedang bersiap menghadapi Praktik Kerja Lapangan (PKL). Saya memiliki ketertarikan besar di bidang pengembangan perangkat lunak, khususnya frontend development, dan terus berusaha mengasah kemampuan dalam membangun antarmuka aplikasi, memahami logika pemrograman, serta mengelola database dengan baik. Saya terbiasa mempelajari teknologi baru secara mandiri melalui proyek-proyek yang saya kerjakan sendiri, karena bagi saya belajar langsung lewat praktik jauh lebih efektif dibanding sekadar teori. Dengan dasar pemahaman matematika yang cukup kuat, saya mampu berpikir logis dalam menganalisis masalah dan menyusun solusi secara terstruktur.
                     </motion.p>
@@ -74,8 +72,7 @@ function About() {
                         className="flex flex-col gap-3 order-1 lg:order-2"
                         variants={rolesStagger}
                         initial="hidden"
-                        whileInView="visible"
-                        viewport={inView}
+                        animate="visible"
                     >
                         {roles.map((role, i) => (
                             <motion.div
@@ -97,8 +94,7 @@ function About() {
                     className="mt-16 pt-6 pb-20 border-t border-brand-accent/20 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-0"
                     variants={rowsStagger}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={inView}
+                    animate="visible"
                 >
                     {infoRows.map((row, i) => (
                         <motion.div

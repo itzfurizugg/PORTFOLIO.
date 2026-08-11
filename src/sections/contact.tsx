@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { contactLinks } from "../data/contactdata";
-import { inView, useFadeUp, useStagger } from "../lib/motion";
+import { useMaskLine, useSpringReveal, useStagger } from "../lib/motion";
 
 function Contact() {
-    const reveal = useFadeUp({ distance: 24 });
-    const itemMotion = useFadeUp({ distance: 20, duration: 0.4 });
+    const reveal = useSpringReveal({ distance: 16, blur: 6, delay: 0.08 });
+    const maskLine = useMaskLine();
+    const itemMotion = useSpringReveal({ distance: 16, blur: 6 });
     const stagger = useStagger(0.08);
 
     return (
@@ -14,27 +15,28 @@ function Contact() {
                     className="text-xs font-extrabold uppercase tracking-widest text-brand-accent mb-4"
                     variants={reveal}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={inView}
+                    animate="visible"
                 >
                     Contact
                 </motion.p>
-                <motion.h2
-                    className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-display tracking-display uppercase mb-12 max-w-4xl"
-                    variants={reveal}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={inView}
-                >
-                    Hubungi<br />Saya<span className="text-brand-accent">.</span>
-                </motion.h2>
+                <h2 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-display tracking-display uppercase mb-12 max-w-4xl">
+                    <span className="block overflow-hidden">
+                        <motion.span className="block" variants={maskLine(0.14)} initial="hidden" animate="visible">
+                            Hubungi
+                        </motion.span>
+                    </span>
+                    <span className="block overflow-hidden">
+                        <motion.span className="block" variants={maskLine(0.2)} initial="hidden" animate="visible">
+                            Saya<span className="text-brand-accent">.</span>
+                        </motion.span>
+                    </span>
+                </h2>
 
                 <motion.div
                     className="grid grid-cols-1 sm:grid-cols-2 gap-4"
                     variants={stagger}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={inView}
+                    animate="visible"
                 >
                     {contactLinks.map((item, index) => (
                         <motion.a

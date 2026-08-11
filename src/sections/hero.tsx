@@ -28,14 +28,14 @@ function Hero() {
         <section id="hero" className="relative bg-brand-background h-screen overflow-hidden">
 
             {/* Frame corner ticks — dekorasi 4 sudut layar */}
-            <div className="absolute top-6 left-6 w-6 h-6 border-t-2 border-l-2 border-brand-accent/40" />
-            <div className="absolute top-6 right-6 w-6 h-6 border-t-2 border-r-2 border-brand-accent/40" />
-            <div className="absolute bottom-6 left-6 w-6 h-6 border-b-2 border-l-2 border-brand-accent/40" />
-            <div className="absolute bottom-6 right-6 w-6 h-6 border-b-2 border-r-2 border-brand-accent/40" />
+            {/* <div className="absolute top-28 left-10 w-6 h-6 border-t-2 border-l-2 border-brand-accent/40" /> */}
+            <div className="absolute top-28 right-10 w-6 h-6 border-t-2 border-r-2 border-brand-accent/40" />
+            <div className="absolute bottom-12 left-10 w-6 h-6 border-b-2 border-l-2 border-brand-accent/40" />
+            {/* <div className="absolute bottom-12 right-10 w-6 h-6 border-b-2 border-r-2 border-brand-accent/40" /> */}
 
             {/* Title dominan di tengah layar, naik ke bagian atas-tengah */}
             <div className="h-full flex items-start justify-center px-6 pt-[22vh]">
-                <h1 className="font-display text-[clamp(2.75rem,10vw,110px)] font-bold leading-display tracking-display uppercase text-center">
+                <h1 className="font-display text-[clamp(4rem,10vw,150px)] font-bold leading-display tracking-display uppercase text-center">
                     {TITLE_LINES.map((line, i) => (
                         <span key={line.text} className="block overflow-hidden">
                             <motion.span
@@ -52,8 +52,8 @@ function Hero() {
             </div>
 
             {/* Deskripsi + CTA: kolom horizontal di bawah, center */}
-            <div className="absolute bottom-24 sm:bottom-28 left-1/2 -translate-x-1/2 w-full px-6 flex flex-col items-center gap-6">
-                <motion.p
+            <div className="absolute bottom-24 sm:bottom-28 left-1/2 -translate-x-1/2 w-full px-6 flex flex-col items-center gap-2">
+                {/* <motion.p
                     className="max-w-md text-center text-sm sm:text-base font-extrabold uppercase tracking-wide text-brand-text/70"
                     variants={desc}
                     initial="hidden"
@@ -61,11 +61,11 @@ function Hero() {
                 >
                     Saya siswa SMK Rekayasa Perangkat Lunak yang punya minat besar
                     di dunia pengembangan web dan aplikasi.
-                </motion.p>
+                </motion.p> */}
 
                 <motion.div variants={cta} initial="hidden" animate="visible">
                     <motion.a
-                        className="inline-flex items-center gap-3 bg-brand-accent text-brand-primary font-extrabold uppercase tracking-wider px-6 py-4 sm:px-8 rounded-brand-lg hover:bg-brand-text transition-colors"
+                        className="inline-flex items-center gap-3 bg-brand-accent text-brand-primary font-extrabold uppercase tracking-wider px-6 py-4 sm:px-8 rounded-brand-none hover:bg-brand-text transition-colors"
                         href="/about"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
