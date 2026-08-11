@@ -4,7 +4,7 @@ import { projects } from "../data/project";
 function ProjectList() {
     return (
         <section id="project" className="bg-brand-background py-10 px-6 sm:px-8 md:px-16">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto">
                 <p className="text-sm font-bold tracking-widest text-brand-accent uppercase mb-2 animate-fade-in-up">
                     Project
                 </p>

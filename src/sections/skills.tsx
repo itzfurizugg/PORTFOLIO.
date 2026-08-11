@@ -1,93 +1,56 @@
+// Skills.tsx
 const skillCategories = [
-    {
-        category: "Languages",
-        items: [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "TypeScript",
-            "PHP",
-            "Python",
-        ],
-    },
-    {
-        category: "Frontend",
-        items: [
-            "React",
-            "Tailwind CSS",
-            "DaisyUI",
-            "Bootstrap",
-        ],
-    },
-    {
-        category: "Backend",
-        items: [
-            "Laravel",
-            "Supabase",
-            "MySQL",
-        ],
-    },
-    {
-        category: "Design",
-        items: [
-            "Figma",
-            "Canva",
-            "Adobe Illustrator",
-        ],
-    },
-    {
-        category: "Tools",
-        items: [
-            "Git & GitHub",
-            "VS Code",
-            "Vite",
-            "Vercel",
-            "ADB",
-        ],
-    },
+    { category: "Web Development", items: ["HTML", "CSS", "Javascript", "PHP"] },
+    { category: "Design", items: ["Figma", "Canva", "Adobe Photoshop", "Adobe Illustrator"] },
+    { category: "Frontend", items: ["React", "Next.js", "Vite", "Tailwind CSS", "DaisyUI"] },
+    { category: "Backend", items: ["Supabase", "PostgreSQL"] },
+    { category: "Tools", items: ["GitHub", "VS Code", "Vercel", "ADB"] },
 ];
 
 function Skills() {
     return (
-        <section id="skills" className="bg-brand-background py-20 px-6 sm:px-8 md:px-16">
-            <div className="max-w-6xl mx-auto">
-                <p className="text-sm font-bold tracking-widest text-brand-accent uppercase mb-2">
+        <section id="skills" className="bg-brand-background py-24 px-6 sm:px-8 md:px-16">
+            <div className="max-w-7xl mx-auto">
+                <p className="text-xs font-extrabold uppercase tracking-widest text-brand-accent mb-4">
                     Keahlian
                 </p>
-                <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-display tracking-display uppercase mb-4">
-                    Keahlian saya.
+                <h2 className="font-display text-brand-text text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-display tracking-display uppercase mb-4 max-w-3xl">
+                    Keahlian<span className="text-brand-accent"> Saya.</span>
                 </h2>
-                <p className="text-brand-text/50 mb-12 max-w-xl">
-                    Selalu belajar. Ini beberapa teknologi dan tools yang paling sering saya gunakan.
+                <p className="max-w-xl text-sm font-bold uppercase tracking-wide text-brand-text/50 mb-14">
+                    Fokus utama di mobile development, dengan pengalaman juga di web dan backend.
                 </p>
 
-                <div className="flex flex-col gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
                     {skillCategories.map((group, index) => (
                         <div
                             key={group.category}
-                            className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-8 py-5 border-t border-brand-accent/20"
+                            className="relative overflow-hidden rounded-brand-lg p-6 flex flex-col gap-6 border border-brand-accent/30 hover:border-brand-accent hover:bg-brand-accent/5 text-brand-text transition-colors lg:col-span-3"
                         >
-                            <div className="sm:w-40 shrink-0 flex items-center gap-3">
-                                <span className="text-xs font-mono text-brand-accent">
-                                    {String(index + 1).padStart(2, "0")}
-                                </span>
-                                <h3 className="text-sm font-bold uppercase tracking-widest text-brand-text">
+                            {/* Angka besar dekoratif */}
+                            <span className="font-display absolute -right-2 -top-6 text-[7rem] font-bold leading-none select-none pointer-events-none text-brand-accent/10">
+                                {String(index + 1).padStart(2, "0")}
+                            </span>
+
+                            <div className="relative flex items-center justify-between">
+                                <h3 className="text-xl font-extrabold uppercase tracking-widest">
                                     {group.category}
                                 </h3>
                             </div>
-                            <div className="flex flex-wrap gap-2">
+
+                            <div className="relative flex flex-wrap gap-2">
                                 {group.items.map((item) => (
                                     <span
                                         key={item}
-                                        className="px-3 py-1.5 border border-brand-accent/30 text-sm font-semibold text-brand-text rounded-brand-md hover:bg-brand-accent hover:text-black hover:border-brand-accent transition-colors cursor-default"
+                                        className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-extrabold rounded-brand-md cursor-default bg-brand-primary text-brand-text hover:bg-brand-accent hover:text-brand-primary transition-colors"
                                     >
+                                        <span className="w-1.5 h-1.5 rounded-full bg-brand-accent" />
                                         {item}
                                     </span>
                                 ))}
                             </div>
                         </div>
                     ))}
-                    <div className="border-t border-brand-accent/20"></div>
                 </div>
             </div>
         </section>
