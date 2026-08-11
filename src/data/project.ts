@@ -16,7 +16,7 @@ export const projects: Project[] = [
         tags: ["React", "Typescript", "Supabase", "Capacitor"],
         badge: "Website",
         link: "https://github.com/itzfurizugg/formaly",
-        preview: "https://noprojectfound.vercel.app"
+        preview: "https://formaly-gamma.vercel.app"
     },
     {
         title: "TelaTV",

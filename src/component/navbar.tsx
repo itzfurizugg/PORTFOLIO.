@@ -1,11 +1,15 @@
 import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Home, User, FolderKanban, Mail } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Home, User, FolderKanban, Mail, X } from "lucide-react";
+import { useSpringReveal, useStagger } from "../lib/motion";
 
 function Navbar() {
-    const [open, setOpen] = useState(false);
-    const [homeFlash, setHomeFlash] = useState(false);
     const location = useLocation();
+    const [open, setOpen] = useState(false);
+    const [openAtPath, setOpenAtPath] = useState(location.pathname);
+    const [homeFlash, setHomeFlash] = useState(false);
     const navigate = useNavigate();
     const flashTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -16,6 +20,13 @@ function Navbar() {
     ];
 
     const isActive = (path: string) => location.pathname === path;
+
+    const isOpen = open && openAtPath === location.pathname;
+
+    const toggleMenu = () => {
+        if (!open) setOpenAtPath(location.pathname);
+        setOpen(!open);
+    };
 
     const handleHomeClick = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -35,113 +46,189 @@ function Navbar() {
         };
     }, []);
 
+    // Kunci scroll body saat modal terbuka
+    useEffect(() => {
+        document.body.style.overflow = isOpen ? "hidden" : "";
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isOpen]);
+
+    // Tutup dengan tombol Escape
+    useEffect(() => {
+        if (!isOpen) return;
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === "Escape") setOpen(false);
+        };
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, [isOpen]);
+
+    const listStagger = useStagger(0.06);
+    const itemReveal = useSpringReveal({ distance: 16, blur: 6 });
+
+    const navItems = [
+        { label: "Home", to: "/", icon: Home },
+        ...menuItems,
+    ];
+
     return (
-        <div className="navbar bg-brand-background relative z-50">
+        <>
+            <div className="navbar bg-brand-background relative z-50 md:max-w-none backdrop-blur-md md:backdrop-blur-none">
 
-            <div className="flex-1">
-                <Link to="/" className="font-display text-xl sm:text-2xl font-bold tracking-wider ml-5 md:ml-10">PORTFOLIO<span className="text-brand-accent">.</span></Link>
-            </div>
+                <div className="flex-1">
+                    <Link to="/" className="font-display text-xl sm:text-2xl font-bold tracking-wider ml-5 md:ml-10">PORTFOLIO<span className="text-brand-accent">.</span></Link>
+                </div>
 
-            <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex">
-                <Link
-                    to="/"
-                    onClick={handleHomeClick}
-                    className={`px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-brand-none transition-colors duration-300 ${
-                        homeFlash
-                            ? "bg-brand-accent text-black"
-                            : "hover:text-brand-accent"
-                    }`}
-                >
-                    Home
-                </Link>
-                {menuItems.map((item) => (
+                <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex">
                     <Link
-                        key={item.label}
-                        to={item.to}
+                        to="/"
+                        onClick={handleHomeClick}
                         className={`px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-brand-none transition-colors duration-300 ${
-                            isActive(item.to)
+                            homeFlash
                                 ? "bg-brand-accent text-black"
                                 : "hover:text-brand-accent"
                         }`}
                     >
-                        {item.label}
+                        Home
                     </Link>
-                ))}
-            </div>
-
-            <div className="flex-none mr-6 md:hidden">
-                <button
-                    onClick={() => setOpen(!open)}
-                    className="btn btn-square btn-ghost"
-                    aria-label="Toggle menu"
-                >
-                    <div className="relative w-5 h-5">
-                        <span
-                            className={`absolute h-0.5 w-5 bg-current rounded-full transition-all duration-300 ${
-                                open ? "top-2 rotate-45" : "top-1"
-                            }`}
-                        />
-                        <span
-                            className={`absolute h-0.5 w-5 bg-current rounded-full top-2 transition-all duration-300 ${
-                                open ? "opacity-0" : "opacity-100"
-                            }`}
-                        />
-                        <span
-                            className={`absolute h-0.5 w-5 bg-current rounded-full transition-all duration-300 ${
-                                open ? "top-2 -rotate-45" : "top-3"
-                            }`}
-                        />
-                    </div>
-                </button>
-            </div>
-
-            <div
-                className={`fixed inset-0 bg-black/40 md:hidden transition-opacity duration-500 ease-in-out ${
-                    open ? "opacity-100" : "opacity-0 pointer-events-none"
-                }`}
-                onClick={() => setOpen(false)}
-            />
-
-            <div
-                className={`absolute top-full left-0 right-0 w-full rounded-none bg-brand-primary border-b border-brand-accent/15 shadow-lg md:hidden overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                    open ? "max-h-96 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2"
-                }`}
-            >
-                <ul className="menu p-4 gap-1 w-full">
-                    <li className="w-full">
+                    {menuItems.map((item) => (
                         <Link
-                            to="/"
-                            onClick={handleHomeClick}
-                            className="flex items-center gap-3 py-3 text-sm font-bold uppercase tracking-wider rounded-brand-md w-full"
+                            key={item.label}
+                            to={item.to}
+                            className={`px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-brand-none transition-colors duration-300 ${
+                                isActive(item.to)
+                                    ? "bg-brand-accent text-black"
+                                    : "hover:text-brand-accent"
+                            }`}
                         >
-                            <Home className="w-4 h-4" />
-                            Home
+                            {item.label}
                         </Link>
-                    </li>
-                    {menuItems.map((item) => {
-                        const Icon = item.icon;
-                        const active = isActive(item.to);
-                        return (
-                            <li key={item.label} className="w-full">
-                                <Link
-                                    to={item.to}
-                                    onClick={() => setOpen(false)}
-                                    className={`flex items-center gap-3 py-3 text-sm font-bold uppercase tracking-wider rounded-brand-md w-full ${
-                                        active
-                                            ? "bg-brand-accent text-black"
-                                            : "hover:bg-brand-primary/60"
-                                    }`}
-                                >
-                                    <Icon className="w-4 h-4" />
-                                    {item.label}
-                                </Link>
-                            </li>
-                        );
-                    })}
-                </ul>
+                    ))}
+                </div>
+
+                <div className="flex-none mr-6 md:hidden">
+                    <button
+                        onClick={toggleMenu}
+                        className="btn btn-square btn-ghost"
+                        aria-label="Toggle menu"
+                    >
+                        <div className="relative w-5 h-5">
+                            <span
+                                className={`absolute h-0.5 w-5 bg-current rounded-full transition-all duration-300 ${
+                                    isOpen ? "top-2 rotate-45" : "top-1"
+                                }`}
+                            />
+                            <span
+                                className={`absolute h-0.5 w-5 bg-current rounded-full top-2 transition-all duration-300 ${
+                                    isOpen ? "opacity-0" : "opacity-100"
+                                }`}
+                            />
+                            <span
+                                className={`absolute h-0.5 w-5 bg-current rounded-full transition-all duration-300 ${
+                                    isOpen ? "top-2 -rotate-45" : "top-3"
+                                }`}
+                            />
+                        </div>
+                    </button>
+                </div>
+
             </div>
 
-        </div>
+            {createPortal(
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.div
+                            key="mobile-menu"
+                            className="fixed inset-0 z-[60] md:hidden"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                        >
+                            {/* Backdrop */}
+                            <div
+                                className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                                onClick={() => setOpen(false)}
+                                aria-hidden="true"
+                            />
+
+                            {/* Panel modal — drawer dari kanan ke kiri */}
+                            <motion.div
+                                className="absolute inset-y-0 right-0 w-[85vw] max-w-sm flex flex-col bg-brand-background shadow-2xl shadow-black/40"
+                                initial={{ x: "100%" }}
+                                animate={{ x: "0%" }}
+                                exit={{ x: "100%" }}
+                                transition={{ type: "spring", stiffness: 260, damping: 32 }}
+                            >
+                                <div className="flex items-center justify-between px-5 py-4 border-b border-brand-accent/10">
+                                    {/* <Link
+                                        to="/"
+                                        onClick={handleHomeClick}
+                                        className="font-display text-base font-bold tracking-wider"
+                                    >
+                                        PORTFOLIO<span className="text-brand-accent">.</span>
+                                    </Link> */}
+                                    <button
+                                        onClick={() => setOpen(false)}
+                                        className="btn btn-square btn-ghost"
+                                        aria-label="Tutup menu"
+                                    >
+                                        <X size={24} />
+                                    </button>
+                                </div>
+
+                                <nav className="flex-1 overflow-y-auto px-5 py-6">
+                                    <motion.ul
+                                        className="flex flex-col gap-3"
+                                        variants={listStagger}
+                                        initial="hidden"
+                                        animate="visible"
+                                    >
+                                        {navItems.map((item, i) => {
+                                            const Icon = item.icon;
+                                            const active = isActive(item.to);
+                                            return (
+                                                <motion.li key={item.to} variants={itemReveal}>
+                                                    <Link
+                                                        to={item.to}
+                                                        onClick={item.to === "/" ? handleHomeClick : () => setOpen(false)}
+                                                        className={`flex items-center justify-between gap-3 w-full px-4 py-4 rounded-brand-md border ${
+                                                            active
+                                                                ? "bg-brand-accent text-brand-primary border-brand-accent"
+                                                                : "border-brand-accent/15 text-brand-text hover:bg-brand-accent/10"
+                                                        }`}
+                                                    >
+                                                        <span className="flex items-center gap-3 font-display text-xl font-bold uppercase tracking-display">
+                                                            <Icon className="w-5 h-5" />
+                                                            {item.label}
+                                                        </span>
+                                                        <span
+                                                            className={`text-xs font-extrabold uppercase tracking-widest ${
+                                                                active ? "text-brand-primary/60" : "text-brand-accent/60"
+                                                            }`}
+                                                        >
+                                                            {String(i + 1).padStart(2, "0")}
+                                                        </span>
+                                                    </Link>
+                                                </motion.li>
+                                            );
+                                        })}
+                                    </motion.ul>
+                                </nav>
+
+                                {/* <div className="px-5 py-6 border-t border-brand-accent/10">
+                                    <p className="text-xs font-extrabold uppercase tracking-widest text-brand-text/40">
+                                        
+                                    </p>
+                                </div> */}
+                            </motion.div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>,
+                document.body
+            )}
+        </>
     );
 }
 

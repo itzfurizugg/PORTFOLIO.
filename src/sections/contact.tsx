@@ -9,7 +9,7 @@ function Contact() {
     const stagger = useStagger(0.08);
 
     return (
-        <section id="contact" className="bg-brand-background py-20 px-6 sm:px-8 md:px-16">
+        <section id="contact" className="bg-brand-background py-6 sm:py-18 px-5 sm:px-8 md:px-16">
             <div className="max-w-7xl mx-auto">
                 <motion.p
                     className="text-xs font-extrabold uppercase tracking-widest text-brand-accent mb-4"
@@ -19,7 +19,7 @@ function Contact() {
                 >
                     Contact
                 </motion.p>
-                <h2 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-display tracking-display uppercase mb-12 max-w-4xl">
+                <h2 className="font-display text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-display tracking-display uppercase mb-12 max-w-4xl">
                     <span className="block overflow-hidden">
                         <motion.span className="block" variants={maskLine(0.14)} initial="hidden" animate="visible">
                             Hubungi

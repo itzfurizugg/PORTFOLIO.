@@ -22,7 +22,7 @@ function About() {
     const rowsStagger = useStagger(0.08);
 
     return (
-        <section id="about" className="relative bg-brand-background py-14 sm:py-16 px-6 sm:px-8 md:px-16 overflow-hidden">
+        <section id="about" className="relative bg-brand-background py-6 sm:py-20  px-6 sm:px-8 md:px-16 overflow-hidden">
             <div className="max-w-7xl mx-auto relative">
 
                 <motion.p
@@ -44,7 +44,7 @@ function About() {
                         animate="visible"
                     />
 
-                    <h1 className="font-display text-brand-text text-5xl sm:text-6xl md:text-7xl xl:text-[6rem] font-bold leading-[1.1] tracking-normal uppercase self-center">
+                    <h1 className="font-display text-brand-text text-4xl sm:text-6xl md:text-7xl xl:text-[6rem] font-bold leading-[1.1] tracking-normal uppercase self-center">
                         <span className="block overflow-hidden">
                             <motion.span className="block" variants={maskLine(0.08)} initial="hidden" animate="visible">
                                 Muhammad Dzaki

@@ -21,21 +21,20 @@ function Hero() {
     }, []);
 
     const titleLine = useMaskLine();
-    const desc = useSpringReveal({ distance: 16, blur: 6, delay: 0.4 });
     const cta = useSpringReveal({ distance: 16, blur: 6, delay: 0.52, scale: 0.95 });
 
     return (
-        <section id="hero" className="relative bg-brand-background h-screen overflow-hidden">
+        <section id="hero" className="relative bg-brand-background h-dvh overflow-hidden">
 
             {/* Frame corner ticks — dekorasi 4 sudut layar */}
             {/* <div className="absolute top-28 left-10 w-6 h-6 border-t-2 border-l-2 border-brand-accent/40" /> */}
-            <div className="absolute top-28 right-10 w-6 h-6 border-t-2 border-r-2 border-brand-accent/40" />
-            <div className="absolute bottom-12 left-10 w-6 h-6 border-b-2 border-l-2 border-brand-accent/40" />
+            <div className="absolute top-6 right-6 sm:top-28 sm:right-10 w-5 h-5 sm:w-6 sm:h-6 border-t-2 border-r-2 border-brand-accent/40 hidden sm:block" />
+            <div className="absolute bottom-6 left-6 sm:bottom-12 sm:left-10 w-5 h-5 sm:w-6 sm:h-6 border-b-2 border-l-2 border-brand-accent/40 hidden sm:block" />
             {/* <div className="absolute bottom-12 right-10 w-6 h-6 border-b-2 border-r-2 border-brand-accent/40" /> */}
 
             {/* Title dominan di tengah layar, naik ke bagian atas-tengah */}
-            <div className="h-full flex items-start justify-center px-6 pt-[22vh]">
-                <h1 className="font-display text-[clamp(4rem,10vw,150px)] font-bold leading-display tracking-display uppercase text-center">
+            <div className="h-full flex flex-col items-center justify-center px-4 sm:px-6">
+                <h1 className="font-display text-[clamp(2.25rem,11vw,150px)] font-bold leading-display tracking-display uppercase text-center items-center sm:items-start mt-14">
                     {TITLE_LINES.map((line, i) => (
                         <span key={line.text} className="block overflow-hidden">
                             <motion.span
@@ -49,10 +48,35 @@ function Hero() {
                         </span>
                     ))}
                 </h1>
+                <motion.div variants={cta} initial="hidden" animate="visible" className="w-full flex justify-center mt-8">
+                    <motion.a
+                        className="inline-flex items-center gap-2 sm:gap-3 mb-14 bg-brand-accent text-brand-primary font-extrabold uppercase tracking-wider text-xs sm:text-sm px-5 py-3.5 sm:px-8 sm:py-4 rounded-brand-none hover:bg-brand-text transition-colors whitespace-nowrap rounded-full sm:rounded-none"
+                        href="/about"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                    >
+                        <span className="hidden sm:inline">Lihat lebih lanjut.</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="sm:w-5 sm:h-5"
+                        >
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </motion.a>
+                </motion.div>
             </div>
 
             {/* Deskripsi + CTA: kolom horizontal di bawah, center */}
-            <div className="absolute bottom-24 sm:bottom-28 left-1/2 -translate-x-1/2 w-full px-6 flex flex-col items-center gap-2">
+            <div className="absolute bottom-8 sm:bottom-24 sm:bottom-28 left-1/2 -translate-x-1/2 w-full px-4 sm:px-6 flex flex-col items-center gap-2">
                 {/* <motion.p
                     className="max-w-md text-center text-sm sm:text-base font-extrabold uppercase tracking-wide text-brand-text/70"
                     variants={desc}
@@ -62,31 +86,6 @@ function Hero() {
                     Saya siswa SMK Rekayasa Perangkat Lunak yang punya minat besar
                     di dunia pengembangan web dan aplikasi.
                 </motion.p> */}
-
-                <motion.div variants={cta} initial="hidden" animate="visible">
-                    <motion.a
-                        className="inline-flex items-center gap-3 bg-brand-accent text-brand-primary font-extrabold uppercase tracking-wider px-6 py-4 sm:px-8 rounded-brand-none hover:bg-brand-text transition-colors"
-                        href="/about"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                    >
-                        <span className="hidden sm:inline">Lihat lebih lanjut.</span>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <path d="M5 12h14" />
-                            <path d="m12 5 7 7-7 7" />
-                        </svg>
-                    </motion.a>
-                </motion.div>
             </div>
 
         </section>

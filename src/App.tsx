@@ -10,8 +10,19 @@ import Contact from "./sections/contact";
 function App() {
   const location = useLocation();
   const isProjectDetail = location.pathname.startsWith("/project/");
+  const isHome = location.pathname === "/";
   const [navVisible, setNavVisible] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.innerWidth <= 767
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const onChange = () => setIsMobile(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
@@ -27,7 +38,7 @@ function App() {
     };
   }, []);
 
-  const showNav = !isScrolling || navVisible;
+  const showNav = isMobile || !isScrolling || navVisible;
 
   return (
     <div className="flex flex-col min-h-screen bg-brand-background text-brand-text">
@@ -55,7 +66,7 @@ function App() {
         </div>
       )}
 
-      <div className="flex-1">
+      <div className={`flex-1 ${isHome ? "" : "pt-16"}`}>
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/about" element={<AboutPage />} />

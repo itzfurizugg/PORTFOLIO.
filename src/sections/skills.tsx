@@ -32,7 +32,7 @@ function Skills() {
                     Keahlian
                 </motion.p>
                 <motion.h2
-                    className="font-display text-brand-text text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-display tracking-display uppercase mb-4 max-w-3xl"
+                    className="font-display text-brand-text text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-display tracking-display uppercase mb-4 max-w-3xl"
                     variants={stagger}
                     initial="hidden"
                     whileInView="visible"

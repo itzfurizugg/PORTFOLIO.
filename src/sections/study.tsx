@@ -39,7 +39,7 @@ function Study() {
                     Riwayat Pendidikan
                 </motion.p>
                 <motion.h2
-                    className="font-display text-brand-background text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-display tracking-display uppercase mb-16 max-w-3xl"
+                    className="font-display text-brand-background text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-display tracking-display uppercase mb-16 max-w-3xl"
                     variants={stagger}
                     initial="hidden"
                     whileInView="visible"
