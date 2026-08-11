@@ -9,6 +9,15 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+        {
+        title: "Formaly",
+        image: "/projects/musleem.jpg",
+        description: "A form maker",
+        tags: ["React", "Typescript", "Supabase", "Capacitor"],
+        badge: "Website",
+        link: "https://github.com/itzfurizugg/formaly",
+        preview: "https://noprojectfound.vercel.app"
+    },
     {
         title: "TelaTV",
         image: "/projects/musleem.jpg",

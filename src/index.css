@@ -36,6 +36,16 @@
 
 :root {
   --font-title: 'Clash Display', ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --font-body: 'Mona Sans Variable', 'Funnel Display', 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+
+  --color-text: #f4f4ed;
+  --color-accent: #d2ff00;
+  --color-border: #d2ff00;
+  --color-primary: #282c20;
+  --color-surface: #d2ff00;
+  --color-background: #3b3c38;
+  --color-on-primary: #ffffff;
+  --color-muted: #282c20;
 }
 
 html {
@@ -49,8 +59,15 @@ html::-webkit-scrollbar {
 }
 
 body {
-  font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text);
   caret-color: transparent;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #0a0a0a;
 }
 
 input,

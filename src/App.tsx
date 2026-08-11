@@ -7,7 +7,7 @@ import Contact from "./sections/contact";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-brand-background text-brand-text">
 
       <div className="sticky top-0 z-10 shrink-0">
         <Navbar />

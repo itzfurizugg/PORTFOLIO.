@@ -18,29 +18,27 @@ const educationHistory = [
 
 function Study() {
     return (
-        <section id="study" className="bg-base-100 py-20 px-6 sm:px-8 md:px-16">
+        <section id="study" className="bg-brand-primary py-20 px-6 sm:px-8 md:px-16">
             <div className="max-w-6xl mx-auto">
-                <p className="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-2">
+                <p className="text-sm font-bold tracking-widest text-brand-accent uppercase mb-2">
                     Riwayat Pendidikan
                 </p>
-                <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-12">
+                <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-display tracking-display uppercase mb-12">
                     Perjalanan Belajar.
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {educationHistory.map((item, index) => (
-                        <div key={index} className="card bg-base-100 border border-black/40 w-full rounded-none">
-                            <div className="card-body">
-                                <p className="text-sm font-semibold text-gray-500 tracking-wide uppercase mb-1">
-                                    {item.period}
-                                </p>
-                                <h3 className="card-title text-xl sm:text-2xl font-black">
-                                    {item.institution}
-                                </h3>
-                                <p className="text-base font-semibold">
-                                    {item.degree}
-                                </p>
-                            </div>
+                        <div key={index} className="bg-brand-background border border-brand-accent/20 rounded-brand-lg p-8 flex flex-col gap-2 hover:border-brand-accent transition-colors">
+                            <p className="text-xs font-bold text-brand-accent tracking-wide uppercase mb-1">
+                                {item.period}
+                            </p>
+                            <h3 className="font-display text-2xl font-bold uppercase text-brand-text">
+                                {item.institution}
+                            </h3>
+                            <p className="text-sm font-semibold text-brand-text/60">
+                                {item.degree}
+                            </p>
                         </div>
                     ))}
                 </div>
