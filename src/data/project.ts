@@ -10,6 +10,15 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+        title: "GSync Legacy",
+        image: "https://res.cloudinary.com/wgyqi7lt/image/upload/v1786431694/formaly_kjzvza.png",
+        description: "GSync Legacy adalah aplikasi yang dibuat untuk mengotomatiskan backup foto dari HP utama ke sebuah Google Pixel XL yang kemudian meneruskan backup tersebut ke Google Photos dengan memanfaatkan fitur unlimited original-quality backup khusus Pixel (2016). Alurnya disederhanakan: HP utama terhubung ke IP/domain perangkat penerima dan mengunggah foto ke sana, lalu perangkat penerima menyimpannya sebagai bucket sementara sebelum diunggah ke Google Photos — meski setup koneksi IP/domain ini sengaja ditunda dulu supaya tidak menghambat progres bagian lain. Kebutuhan yang sudah kamu pastikan mencakup dashboard cloud untuk memantau status sync dari mana saja (tidak cuma LAN), riwayat upload yang tersinkron lintas perangkat lewat internet, dan notifikasi push saat upload gagal, ditambah revisi bahwa proses sync harus tetap berjalan di background walau aplikasi ditutup, serta widget home screen dengan 3 template ukuran, bukan cuma 1.",
+        tags: ["Flutter", "Cloudflare Tunnel", "Tailscape"],
+        badge: "Mobile",
+        link: "https://github.com/itzfurizugg/GSync-legacy",
+        preview: "https://noprojectfound.vercel.app"
+    },
+    {
         title: "Formaly",
         image: "https://res.cloudinary.com/wgyqi7lt/image/upload/v1786431694/formaly_kjzvza.png",
         description: "Formaly adalah aplikasi pembuat formulir seperti Google Forms yang dikembangkan sebagai proyek tugas akhir kelompok beranggotakan 6 orang. Aplikasi ini punya versi mobile (Flutter) dan web (React TypeScript) dengan backend Supabase PostgreSQL, mendukung tiga peran pengguna (user, creator, admin), serta dilengkapi rich text editor untuk membuat deskripsi form dan pertanyaan yang fleksibel — tidak terikat ke kelas tertentu sehingga bisa juga digunakan untuk ujian.",
